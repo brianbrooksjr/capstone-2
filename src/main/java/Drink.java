@@ -10,7 +10,7 @@ public class Drink {
         this.cost = calculateCost();
     }
 
-    private float calculateCost() {
+    public float calculateCost() {
         switch (this.size.toLowerCase()) {
             case "small":
                 return 2.00f;
@@ -22,4 +22,6 @@ public class Drink {
                 throw new IllegalArgumentException("Invaild size: " + this.size);
 
 
+        }
+    }
 }
