@@ -12,12 +12,17 @@ public class Drink {
 
     public double calculateCost() {
         return switch (this.size.toLowerCase()) {
-            case "small" -> 2.00f;
-            case "medium" -> 2.50f;
-            case "large" -> 3.00f;
+            case "small" -> 2.00;
+            case "medium" -> 2.50;
+            case "large" -> 3.00;
             default -> throw new IllegalArgumentException("Invalid size: " + this.size);
         };
     }
+
+        public double getCost() {
+            return calculateCost();
+        }
+
                 @Override
                 public String toString() {
                 return size + " " + flavor + " - $" + cost;
