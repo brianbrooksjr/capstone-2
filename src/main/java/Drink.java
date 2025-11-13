@@ -1,8 +1,8 @@
 public class Drink {
 
-    private String flavor;
-    private String size;
-    private double cost;
+    private final String flavor;
+    private final String size;
+    private final double cost;
 
     public Drink(String flavor, String size) {
         this.flavor = flavor;
