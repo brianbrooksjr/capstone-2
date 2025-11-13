@@ -6,9 +6,6 @@ public class UserInterface {
 
     public void showHomeScreen() {
         Order order = new Order();
-        // ask user if they want a drink and what size & flavor
-        // 1. be able to add 1 drink based on user input
-        // 2. be able to add >1
 
         Drink davesDrink = new Drink("Coke Zero", "large");
         order.addDrink(davesDrink);
