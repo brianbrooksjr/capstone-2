@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class UserInterface {
     public Scanner scanner;
+    private Object drinkChoice;
 
     public void showHomeScreen() {
         Order order = new Order();
@@ -33,15 +34,16 @@ public class UserInterface {
             }
 
             String flavor;
-            switch (drinks) {
-                case 1:
-                    flavor = "Coke";
-                    break;
+            switch (drinkChoice) {
+                case 1: flavor = "Coke"; break;
+                case 2: flavor = "Sprite"; break;
+                case 3: flavor = "Fanta"; break;
+                case 4: flavor = "Pepsi"; break;
+                case 5: flavor = "Coke Zero"; break;
                 default:
                     System.out.println("Sorry we do not have that Drink");
-                    continue;
+                    continue; // Restart the loop
             }
-
         }
     }
 }
