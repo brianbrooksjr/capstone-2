@@ -15,17 +15,23 @@ public class UserInterface {
 
     private void addDrinksToOrder() {
         while (true) {
-
+            //Drink Menu Display
             System.out.println("=== Drink Menu ===");
             System.out.println("1) Coke");
+            System.out.println("2) Sprite");
+            System.out.println("3) Fanta");
+            System.out.println("4) Pepsi");
+            System.out.println("5) Coke Zero");
             System.out.println("0) Exit Drink Selection");
 
+            //Prompt for User Drink Selection
             System.out.print("Select a drink by number: ");
-            int drinks = scanner.nextInt();
+            int drinkChoice = scanner.nextInt();
 
-            if (drinks == 0) {
-                break;
+            if (drinkChoice == 0) {
+                break; // Exit the drink selection loop
             }
+
             String flavor;
             switch (drinks) {
                 case 1:
