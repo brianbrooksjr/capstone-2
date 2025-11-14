@@ -5,13 +5,13 @@ import java.util.Scanner;
 public class Pizza {
 
 
-    private  String size;
-    private  String crust;
-    private  boolean stuffedCrust;
+    private String size;
+    private String crust;
+    private boolean stuffedCrust;
 
-    private  List<String> regularToppings;
-    private  List<String> meatToppings;
-    private  List<String> cheeseToppings;
+    private List<String> regularToppings;
+    private List<String> meatToppings;
+    private List<String> cheeseToppings;
 
 
     public Pizza() {
@@ -65,7 +65,6 @@ public class Pizza {
         }
     }
 
-
     public double calculateBasePrice() {
         switch (size) {
             case "personal":
@@ -109,7 +108,6 @@ public class Pizza {
         return stuffedCrust ? 2.00 : 0.00;
     }
 
-
     public double calculateTotalCost() {
         return calculateBasePrice()
                 + calculateMeatCost()
@@ -127,7 +125,5 @@ public class Pizza {
         System.out.println("Regular Toppings: " + regularToppings);
         System.out.println("Total Cost: $" + String.format("%.2f", calculateTotalCost()));
     }
-
-
 
 }
