@@ -8,24 +8,36 @@ public class Pizza {
     private String size;
     private String crust;
     private boolean stuffedCrust;
-    private final List<String> regularToppings;
-    private final List<String> meatToppings;
-    private final List<String> cheeseToppings;
-
+    private List<Toppings> toppings;
+    private static Scanner scanner = new Scanner(System.in);
 
     public Pizza() {
-        this.size = size.toLowerCase();
-        this.crust = crust.toLowerCase();
-        this.stuffedCrust = stuffedCrust;
-        this.regularToppings = new ArrayList<>();
-        this.meatToppings = new ArrayList<>();
-        this.cheeseToppings = new ArrayList<>();
+        toppings = new ArrayList<>();
     }
 
 
+    public void buildPizza() {
+        System.out.println("=== Create Your Pizza ===");
 
+        // Size
+        while (true) {
+            System.out.print("Select size (8=Personal, 12=Medium, 16=Large): ");
+            size = scanner.nextLine();
+            if (size.equals("8") || size.equals("12") || size.equals("16")) break;
+            System.out.println("Invalid size.");
+        }
+        // Crust
+        while (true) {
+            System.out.print("Select crust (Thin, Regular, Thick, Cauliflower): ");
+            crust = scanner.nextLine();
+            if (crust.equalsIgnoreCase("Thin") || crust.equalsIgnoreCase("Regular") ||
+                    crust.equalsIgnoreCase("Thick") || crust.equalsIgnoreCase("Cauliflower")) break;
+            System.out.println("Invalid crust.");
+        }
+    }
+}
 
-    public void addRegularTopping(String topping) {
+  /**  public void addRegularTopping(String topping) {
         regularToppings.add(topping.toLowerCase());
     }
 
@@ -112,6 +124,5 @@ public class Pizza {
                 + calculateStuffedCrustCost();
     }
 
-    public void buildPizza(Scanner scanner) {
-    }
-}
+
+}**/

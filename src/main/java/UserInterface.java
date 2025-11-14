@@ -6,42 +6,7 @@ public class UserInterface {
     private Order order = new Order();   // users build this order
 
     public void displayMenu() {
-        while (true) {
 
-            System.out.println("\n=== Welcome To B's Italian Pizza ===");
-            System.out.println("1) Add Pizza");
-            System.out.println("2) Add Garlic Knots");
-            System.out.println("3) Add Drink");
-            System.out.println("4) View Order");
-            System.out.println("5) Checkout");
-            System.out.println("0) Exit");
-            System.out.print("Enter your choice: ");
-
-            int choice = readInt();
-
-            switch (choice) {
-                case 1:
-                    addPizza();
-                    break;
-                case 2:
-                    addGarlicKnots();
-                    break;
-                case 3:
-                    addDrink();
-                    break;
-                case 4:
-                    order.displayOrder();
-                    break;
-                case 5:
-                    checkout();
-                    return;
-                case 0:
-                    System.out.println("Goodbye!");
-                    return;
-                default:
-                    System.out.println("Invalid choice. Try again.");
-            }
-        }
     }
 
     private void addPizza() {
