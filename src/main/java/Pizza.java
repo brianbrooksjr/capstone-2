@@ -5,21 +5,64 @@ import java.util.Scanner;
 public class Pizza {
 
 
-    private final String size;
-    private final String crust;
-    private final boolean stuffedCrust;
-    private final List<String> regularToppings;
-    private final List<String> meatToppings;
-    private final List<String> cheeseToppings;
+    private  String size;
+    private  String crust;
+    private  boolean stuffedCrust;
+
+    private  List<String> regularToppings;
+    private  List<String> meatToppings;
+    private  List<String> cheeseToppings;
 
 
-    public Pizza(String size, String crust, boolean stuffedCrust) {
-        this.size = size.toLowerCase();
-        this.crust = crust.toLowerCase();
-        this.stuffedCrust = stuffedCrust;
+    public Pizza() {
         this.regularToppings = new ArrayList<>();
         this.meatToppings = new ArrayList<>();
         this.cheeseToppings = new ArrayList<>();
+    }
+
+    public void buildPizza(Scanner scanner) {
+        System.out.println("=== Create Your Pizza ===");
+
+        while (true) {
+            System.out.print("Choose size (personal/medium/large): ");
+            size = scanner.nextLine().toLowerCase();
+            if (size.equals("personal") || size.equals("medium") || size.equals("large")) break;
+            System.out.println("Invalid size.");
+        }
+
+        while (true) {
+            System.out.print("Choose crust (thin/regular/thick/cauliflower): ");
+            crust = scanner.nextLine().toLowerCase();
+            if (crust.equals("thin") || crust.equals("regular") || crust.equals("thick")
+                    || crust.equals("cauliflower")) break;
+            System.out.println("Invalid crust.");
+        }
+
+        System.out.print("Stuffed crust? (y/n): ");
+        stuffedCrust = scanner.nextLine().equalsIgnoreCase("y");
+
+        addMultipleToppings(scanner, "Select Meat Toopings: \"Pepperoni\",\"Sausage\",\"Ham\",\"Bacon\",\"Chicken\",\"Meatball\"", meatToppings);
+
+        addMultipleToppings(scanner, "Select Cheese Toopings:\"Mozzarella\",\"Parmesan\",\"Ricotta\",\"Goat Cheese\",\"Buffalo\"", cheeseToppings);
+
+        addMultipleToppings(scanner, "Select Regular Toopings:\"Onions\",\"Mushrooms\",\"Bell Peppers\",\"Olives\",\"Tomatoes\",\"Spinach\",\"Basil\",\"Pineapple\",\"Anchovies\"", regularToppings);
+        System.out.println("Pizza completed!");
+    }
+
+    private void addMultipleToppings(Scanner scanner, String type, List<String> list) {
+        System.out.println("Add " + type + " toppings (comma-separated or 0 to skip): ");
+        String input = scanner.nextLine();
+
+        if (input.equals("0")) return;
+
+        String[] toppings = input.split(",");
+
+        for (String t : toppings) {
+            t = t.trim();
+
+            if (!t.isEmpty())
+                list.add(t.toLowerCase());
+        }
     }
 
 
@@ -75,8 +118,16 @@ public class Pizza {
     }
 
     public void display() {
+        System.out.println("\nPizza Summary:");
+        System.out.println("Size: " + size);
+        System.out.println("Crust: " + crust);
+        System.out.println("Stuffed: " + (stuffedCrust ? "Yes" : "No"));
+        System.out.println("Meats: " + meatToppings);
+        System.out.println("Cheeses: " + cheeseToppings);
+        System.out.println("Regular Toppings: " + regularToppings);
+        System.out.println("Total Cost: $" + String.format("%.2f", calculateTotalCost()));
     }
 
-    public void buildPizza(Scanner scanner) {
-    }
+
+
 }

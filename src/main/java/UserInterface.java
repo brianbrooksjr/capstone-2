@@ -81,6 +81,13 @@ public class UserInterface {
         System.out.println("Pizza added!");
     }
 
+
+
+    public void buildPizza(Scanner scanner) {
+
+    }
+
+
     private void addGarlicKnots() {
         System.out.print("How many orders? ");
         int qty = readInt();
