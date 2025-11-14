@@ -94,4 +94,7 @@ public class UserInterface {
         }
         return scanner.nextInt();
     }
+
+    public void showHomeScreen() {
+    }
 }

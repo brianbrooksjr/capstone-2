@@ -1,7 +1,7 @@
 public class GarlicKnots {
 
-    private final int quantity;   // number of orders of garlic knots
-    private final double costPerKnot = 1.50; // price per order of garlic knots
+    private final int quantity;
+    private final double costPerKnot = 1.50;
 
     public GarlicKnots(int quantity) {
         if (quantity < 1) {

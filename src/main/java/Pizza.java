@@ -1,18 +1,19 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Pizza {
 
 
-    private final String size;
-    private final String crust;
-    private final boolean stuffedCrust;
+    private String size;
+    private String crust;
+    private boolean stuffedCrust;
     private final List<String> regularToppings;
     private final List<String> meatToppings;
     private final List<String> cheeseToppings;
 
 
-    public Pizza(String size, String crust, boolean stuffedCrust) {
+    public Pizza() {
         this.size = size.toLowerCase();
         this.crust = crust.toLowerCase();
         this.stuffedCrust = stuffedCrust;
@@ -20,6 +21,8 @@ public class Pizza {
         this.meatToppings = new ArrayList<>();
         this.cheeseToppings = new ArrayList<>();
     }
+
+
 
 
     public void addRegularTopping(String topping) {
@@ -107,5 +110,8 @@ public class Pizza {
                 + calculateMeatCost()
                 + calculateCheeseCost()
                 + calculateStuffedCrustCost();
+    }
+
+    public void buildPizza(Scanner scanner) {
     }
 }
