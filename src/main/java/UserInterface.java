@@ -1,13 +1,14 @@
 import java.util.Scanner;
 
 public class UserInterface {
-    public Scanner scanner;
-    private Object drinkChoice;
+
+    private Scanner scanner = new Scanner(System.in);
+    private Order order = new Order();   // users build this order
 
     public void displayMenu() {
-        int choice;
-        while (true){
-            System.out.println("Welcome To B's Italian Pizza :} ");
+        while (true) {
+
+            System.out.println("\n=== Welcome To B's Italian Pizza ===");
             System.out.println("1) Add Pizza");
             System.out.println("2) Add Garlic Knots");
             System.out.println("3) Add Drink");
@@ -16,76 +17,81 @@ public class UserInterface {
             System.out.println("0) Exit");
             System.out.print("Enter your choice: ");
 
-            choice = scanner.nextInt();
+            int choice = readInt();
 
             switch (choice) {
                 case 1:
-
+                    addPizza();
                     break;
                 case 2:
+                    addGarlicKnots();
                     break;
                 case 3:
+                    addDrink();
                     break;
                 case 4:
+                    order.displayOrder();
                     break;
                 case 5:
-                    break;
+                    checkout();
+                    return;
+                case 0:
+                    System.out.println("Goodbye!");
+                    return;
                 default:
-                    System.out.println("Sorry we do not have that Drink");
-                    continue; // Restart the loop
-
+                    System.out.println("Invalid choice. Try again.");
             }
         }
     }
 
-            public void showHomeScreen () {
-                Order order = new Order();
+    private void addPizza() {
+        Pizza pizza = new Pizza();
+        pizza.buildPizza(scanner);
+        order.addPizza(pizza);
+        System.out.println("Pizza added!");
+    }
 
-                Drink davesDrink = new Drink("Coke Zero", "large");
-                order.addDrink(davesDrink);
-            }
+    private void addGarlicKnots() {
+        System.out.print("How many orders of garlic knots? ");
+        int qty = readInt();
+        if (qty < 1) qty = 1;
+
+        GarlicKnots gk = new GarlicKnots(qty);
+        order.addGarlicKnots(gk);
+
+        System.out.println("Garlic knots added!");
+    }
+
+    private void addDrink() {
+        System.out.println("\n=== Add Drink ===");
+
+        scanner.nextLine(); // clear leftover newline
+
+        System.out.print("Enter drink flavor (anything you want): ");
+        String flavor = scanner.nextLine();
+
+        System.out.print("Enter size (small / medium / large): ");
+        String size = scanner.next().toLowerCase();
+
+        Drink drink = new Drink(flavor, size);
+        order.addDrink(drink);
+
+        System.out.println("Drink added: " + size + " " + flavor);
+    }
 
 
-            private void addDrinksToOrder () {
-                while (true) {
-                    //Drink Menu Display
-                    System.out.println("=== Drink Menu ===");
-                    System.out.println("1) Coke");
-                    System.out.println("2) Sprite");
-                    System.out.println("3) Fanta");
-                    System.out.println("4) Pepsi");
-                    System.out.println("5) Coke Zero");
-                    System.out.println("0) Exit Drink Selection");
+    private void checkout() {
+        System.out.println("\n=== Final Order ===");
+        order.displayOrder();
+        System.out.println("\nThank you for ordering! Receipt will be generated soon.");
+    }
 
-                    //Prompt for User Drink Selection
-                    System.out.print("Select a drink by number: ");
-                    int drinkChoice = scanner.nextInt();
-
-                    if (drinkChoice == 0) {
-                        break; // Exit the drink selection loop
-                    }
-
-                    String flavor;
-                    switch (drinkChoice) {
-                        case 1:
-                            flavor = "Coke";
-                            break;
-                        case 2:
-                            flavor = "Sprite";
-                            break;
-                        case 3:
-                            flavor = "Fanta";
-                            break;
-                        case 4:
-                            flavor = "Pepsi";
-                            break;
-                        case 5:
-                            flavor = "Coke Zero";
-                            break;
-                        default:
-                            System.out.println("Sorry we do not have that Drink");
-                            continue; // Restart the loop
-                    }
-                }
-            }
+    // A safe input reader to avoid crashes
+    private int readInt() {
+        while (!scanner.hasNextInt()) {
+            System.out.print("Invalid input. Enter a number: ");
+            scanner.next(); // discard bad input
         }
+        return scanner.nextInt();
+    }
+}
