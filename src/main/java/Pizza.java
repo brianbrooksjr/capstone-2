@@ -5,48 +5,21 @@ import java.util.Scanner;
 public class Pizza {
 
 
-    private String size;
-    private String crust;
-    private boolean stuffedCrust;
-    private List<Toppings> toppings;
-    private static Scanner scanner = new Scanner(System.in);
-
-    public Pizza() {
-        toppings = new ArrayList<>();
-    }
+    private final String size;
+    private final String crust;
+    private final boolean stuffedCrust;
+    private final List<String> regularToppings;
+    private final List<String> meatToppings;
+    private final List<String> cheeseToppings;
 
 
-    public void buildPizza(Scanner scanner) {
-        System.out.println("=== Create Your Pizza ===");
-
-        // Size
-        while (true) {
-            System.out.print("Select size (8=Personal, 12=Medium, 16=Large): ");
-            size = Pizza.scanner.nextLine();
-            if (size.equals("8") || size.equals("12") || size.equals("16")) break;
-            System.out.println("Invalid size.");
-        }
-        // Crust
-        while (true) {
-            System.out.print("Select crust (Thin, Regular, Thick, Cauliflower): ");
-            crust = Pizza.scanner.nextLine();
-            if (crust.equalsIgnoreCase("Thin") || crust.equalsIgnoreCase("Regular") ||
-                    crust.equalsIgnoreCase("Thick") || crust.equalsIgnoreCase("Cauliflower")) break;
-            System.out.println("Invalid crust.");
-        }
-    }
-}
-
-  /**  public void addRegularTopping(String topping) {
-        regularToppings.add(topping.toLowerCase());
-    }
-
-    public void addMeatTopping(String topping) {
-        meatToppings.add(topping.toLowerCase());
-    }
-
-    public void addCheeseTopping(String topping) {
-        cheeseToppings.add(topping.toLowerCase());
+    public Pizza(String size, String crust, boolean stuffedCrust) {
+        this.size = size.toLowerCase();
+        this.crust = crust.toLowerCase();
+        this.stuffedCrust = stuffedCrust;
+        this.regularToppings = new ArrayList<>();
+        this.meatToppings = new ArrayList<>();
+        this.cheeseToppings = new ArrayList<>();
     }
 
 
@@ -93,29 +66,6 @@ public class Pizza {
         return stuffedCrust ? 2.00 : 0.00;
     }
 
-    public String getSize() {
-        return size;
-    }
-
-    public String getCrust() {
-        return crust;
-    }
-
-    public boolean hasStuffedCrust() {
-        return stuffedCrust;
-    }
-
-    public List<String> getRegularToppings() {
-        return regularToppings;
-    }
-
-    public List<String> getMeatToppings() {
-        return meatToppings;
-    }
-
-    public List<String> getCheeseToppings() {
-        return cheeseToppings;
-    }
 
     public double calculateTotalCost() {
         return calculateBasePrice()
@@ -124,5 +74,9 @@ public class Pizza {
                 + calculateStuffedCrustCost();
     }
 
+    public void display() {
+    }
 
-}**/
+    public void buildPizza(Scanner scanner) {
+    }
+}
