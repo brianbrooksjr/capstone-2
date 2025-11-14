@@ -16,20 +16,20 @@ public class Pizza {
     }
 
 
-    public void buildPizza() {
+    public void buildPizza(Scanner scanner) {
         System.out.println("=== Create Your Pizza ===");
 
         // Size
         while (true) {
             System.out.print("Select size (8=Personal, 12=Medium, 16=Large): ");
-            size = scanner.nextLine();
+            size = Pizza.scanner.nextLine();
             if (size.equals("8") || size.equals("12") || size.equals("16")) break;
             System.out.println("Invalid size.");
         }
         // Crust
         while (true) {
             System.out.print("Select crust (Thin, Regular, Thick, Cauliflower): ");
-            crust = scanner.nextLine();
+            crust = Pizza.scanner.nextLine();
             if (crust.equalsIgnoreCase("Thin") || crust.equalsIgnoreCase("Regular") ||
                     crust.equalsIgnoreCase("Thick") || crust.equalsIgnoreCase("Cauliflower")) break;
             System.out.println("Invalid crust.");
